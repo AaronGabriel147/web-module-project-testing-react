@@ -6,10 +6,12 @@ import Show from "./Show";
 import fetchShow from '../api/fetchShow';
 
 const Display = (props) => {
+
     const [show, setShow] = useState(null);
     const [selectedSeason, setSelectedSeason] = useState("none");
 
     const { displayFunc } = props;
+    
     const handleClick = () => {
         fetchShow().then(data => {
             setShow(data);
@@ -20,14 +22,16 @@ const Display = (props) => {
         });
     }
         
-    const handleSelect = e => {
+    const handleSelect = e => {                    // Main button under main image.
         setSelectedSeason(e.target.value);
     };
 
     return (
         <div>
-            <img className="poster-img" src='http://static.tvmaze.com/uploads/images/original_untouched/200/501942.jpg' alt="header image" />
+            <img className="poster-img" src='http://static.tvmaze.com/uploads/images/original_untouched/200/501942.jpg' alt="header image" /> {/* Main image on homepage. */}
+
             <br/>
+
             {/* THIS IS THE BUTTON!!! */}
             {
             !show ? <button onClick={handleClick}>Press to Get Show Data</button>
